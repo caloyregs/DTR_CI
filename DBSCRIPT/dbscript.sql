@@ -12,7 +12,7 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
--- Dumping structure for table empattendanceci.attendance
+-- Dumping structure for table dtr_ci.attendance
 CREATE TABLE IF NOT EXISTS `attendance` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` char(6) NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `attendance` (
   CONSTRAINT `attendance_ibfk_5` FOREIGN KEY (`location_id`) REFERENCES `location` (`id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=latin1;
 
--- Dumping data for table empattendanceci.attendance: ~19 rows (approximately)
+-- Dumping data for table dtr_ci.attendance: ~19 rows (approximately)
 /*!40000 ALTER TABLE `attendance` DISABLE KEYS */;
 INSERT INTO `attendance` (`id`, `username`, `employee_id`, `department_id`, `shift_id`, `location_id`, `in_time`, `notes`, `image`, `lack_of`, `in_status`, `out_time`, `out_status`, `date_added`) VALUES
 	(45, 'ADM011', 011, 'ADM', 1, 1, 1589178316, 'sdf', 'item-200511-8f5d7be1a1.jpg', 'None', 'Late', 1589178477, 'Early', '2022-02-22 13:52:34'),
@@ -66,14 +66,14 @@ INSERT INTO `attendance` (`id`, `username`, `employee_id`, `department_id`, `shi
 	(67, 'SCD029', 029, 'SCD', 1, 4, 1645510512, 'on site (in the office)...', 'item-220222-7ef70181e3.jpg', 'None', 'Late', 1645510600, 'Early', '2022-02-22 13:15:12');
 /*!40000 ALTER TABLE `attendance` ENABLE KEYS */;
 
--- Dumping structure for table empattendanceci.department
+-- Dumping structure for table dtr_ci.department
 CREATE TABLE IF NOT EXISTS `department` (
   `id` char(3) NOT NULL,
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table empattendanceci.department: ~8 rows (approximately)
+-- Dumping data for table dtr_ci.department: ~8 rows (approximately)
 /*!40000 ALTER TABLE `department` DISABLE KEYS */;
 INSERT INTO `department` (`id`, `name`) VALUES
 	('ACD', 'Accounting Department'),
@@ -86,7 +86,7 @@ INSERT INTO `department` (`id`, `name`) VALUES
 	('STD', 'Store Department');
 /*!40000 ALTER TABLE `department` ENABLE KEYS */;
 
--- Dumping structure for table empattendanceci.employee
+-- Dumping structure for table dtr_ci.employee
 CREATE TABLE IF NOT EXISTS `employee` (
   `id` int(3) unsigned zerofill NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
@@ -103,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `employee` (
   KEY `created_by` (`created_by`)
 ) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
 
--- Dumping data for table empattendanceci.employee: ~16 rows (approximately)
+-- Dumping data for table dtr_ci.employee: ~16 rows (approximately)
 /*!40000 ALTER TABLE `employee` DISABLE KEYS */;
 INSERT INTO `employee` (`id`, `name`, `email`, `gender`, `image`, `birth_date`, `hire_date`, `shift_id`, `created_by`, `datetime_added`, `datetime_updated`) VALUES
 	(001, 'Sad True', 'devi@gmail.com', 'F', 'default.png', '1996-06-06', '2020-03-01', 2, 'ADM011', '2022-02-22 13:13:14', '2022-02-22 13:46:38'),
@@ -124,7 +124,7 @@ INSERT INTO `employee` (`id`, `name`, `email`, `gender`, `image`, `birth_date`, 
 	(029, 'TEST TEST', 'jamesofter@gmail.com', 'M', 'item-220222-49ec2c0464.jpg', '1998-01-07', '2022-02-01', 1, 'admin', '2022-02-22 07:13:31', NULL);
 /*!40000 ALTER TABLE `employee` ENABLE KEYS */;
 
--- Dumping structure for table empattendanceci.employee_department
+-- Dumping structure for table dtr_ci.employee_department
 CREATE TABLE IF NOT EXISTS `employee_department` (
   `id` int(3) NOT NULL AUTO_INCREMENT,
   `employee_id` int(3) unsigned zerofill NOT NULL,
@@ -136,7 +136,7 @@ CREATE TABLE IF NOT EXISTS `employee_department` (
   CONSTRAINT `employee_department_ibfk_2` FOREIGN KEY (`department_id`) REFERENCES `department` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
 
--- Dumping data for table empattendanceci.employee_department: ~15 rows (approximately)
+-- Dumping data for table dtr_ci.employee_department: ~15 rows (approximately)
 /*!40000 ALTER TABLE `employee_department` DISABLE KEYS */;
 INSERT INTO `employee_department` (`id`, `employee_id`, `department_id`) VALUES
 	(1, 001, 'HRD'),
@@ -156,14 +156,14 @@ INSERT INTO `employee_department` (`id`, `employee_id`, `department_id`) VALUES
 	(29, 029, 'SCD');
 /*!40000 ALTER TABLE `employee_department` ENABLE KEYS */;
 
--- Dumping structure for table empattendanceci.location
+-- Dumping structure for table dtr_ci.location
 CREATE TABLE IF NOT EXISTS `location` (
   `id` int(1) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
--- Dumping data for table empattendanceci.location: ~5 rows (approximately)
+-- Dumping data for table dtr_ci.location: ~5 rows (approximately)
 /*!40000 ALTER TABLE `location` DISABLE KEYS */;
 INSERT INTO `location` (`id`, `name`) VALUES
 	(1, 'Home'),
@@ -173,7 +173,7 @@ INSERT INTO `location` (`id`, `name`) VALUES
 	(6, 'Field');
 /*!40000 ALTER TABLE `location` ENABLE KEYS */;
 
--- Dumping structure for table empattendanceci.shift
+-- Dumping structure for table dtr_ci.shift
 CREATE TABLE IF NOT EXISTS `shift` (
   `id` int(1) NOT NULL AUTO_INCREMENT,
   `start` time NOT NULL,
@@ -181,7 +181,7 @@ CREATE TABLE IF NOT EXISTS `shift` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
--- Dumping data for table empattendanceci.shift: ~6 rows (approximately)
+-- Dumping data for table dtr_ci.shift: ~6 rows (approximately)
 /*!40000 ALTER TABLE `shift` DISABLE KEYS */;
 INSERT INTO `shift` (`id`, `start`, `end`) VALUES
 	(1, '08:00:00', '16:00:00'),
@@ -192,7 +192,7 @@ INSERT INTO `shift` (`id`, `start`, `end`) VALUES
 	(6, '01:00:00', '12:00:00');
 /*!40000 ALTER TABLE `shift` ENABLE KEYS */;
 
--- Dumping structure for table empattendanceci.users
+-- Dumping structure for table dtr_ci.users
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` char(6) NOT NULL,
@@ -209,7 +209,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   CONSTRAINT `users_ibfk_2` FOREIGN KEY (`role_id`) REFERENCES `user_role` (`id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
--- Dumping data for table empattendanceci.users: ~9 rows (approximately)
+-- Dumping data for table dtr_ci.users: ~9 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `username`, `password`, `employee_id`, `role_id`, `qrcode`) VALUES
 	(1, 'ACD002', '$2y$10$sMK6ZpCQ9jNtj/k9E304Pu298U7p.I7zgV7zOf4XcK6BS3NNIL7Wa', 002, 2, 'qr_none.jpg'),
@@ -224,7 +224,7 @@ INSERT INTO `users` (`id`, `username`, `password`, `employee_id`, `role_id`, `qr
 	(9, 'STD026', '$2y$10$UVfsdtU7.RkAaMjf3H8VN.V8Eg6QZc3PPU6sWuPwo6fZcc6w9Zl2O', 026, 2, 'qr_none.jpg');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
--- Dumping structure for table empattendanceci.user_access
+-- Dumping structure for table dtr_ci.user_access
 CREATE TABLE IF NOT EXISTS `user_access` (
   `id` int(2) NOT NULL AUTO_INCREMENT,
   `role_id` int(1) NOT NULL,
@@ -236,7 +236,7 @@ CREATE TABLE IF NOT EXISTS `user_access` (
   CONSTRAINT `user_access_ibfk_2` FOREIGN KEY (`role_id`) REFERENCES `user_role` (`id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
--- Dumping data for table empattendanceci.user_access: ~5 rows (approximately)
+-- Dumping data for table dtr_ci.user_access: ~5 rows (approximately)
 /*!40000 ALTER TABLE `user_access` DISABLE KEYS */;
 INSERT INTO `user_access` (`id`, `role_id`, `menu_id`) VALUES
 	(1, 1, 1),
@@ -246,14 +246,14 @@ INSERT INTO `user_access` (`id`, `role_id`, `menu_id`) VALUES
 	(5, 1, 5);
 /*!40000 ALTER TABLE `user_access` ENABLE KEYS */;
 
--- Dumping structure for table empattendanceci.user_menu
+-- Dumping structure for table dtr_ci.user_menu
 CREATE TABLE IF NOT EXISTS `user_menu` (
   `id` int(2) NOT NULL AUTO_INCREMENT,
   `menu` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
--- Dumping data for table empattendanceci.user_menu: ~5 rows (approximately)
+-- Dumping data for table dtr_ci.user_menu: ~5 rows (approximately)
 /*!40000 ALTER TABLE `user_menu` DISABLE KEYS */;
 INSERT INTO `user_menu` (`id`, `menu`) VALUES
 	(1, 'Admin'),
@@ -263,21 +263,21 @@ INSERT INTO `user_menu` (`id`, `menu`) VALUES
 	(5, 'Report');
 /*!40000 ALTER TABLE `user_menu` ENABLE KEYS */;
 
--- Dumping structure for table empattendanceci.user_role
+-- Dumping structure for table dtr_ci.user_role
 CREATE TABLE IF NOT EXISTS `user_role` (
   `id` int(1) NOT NULL AUTO_INCREMENT,
   `name` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
--- Dumping data for table empattendanceci.user_role: ~2 rows (approximately)
+-- Dumping data for table dtr_ci.user_role: ~2 rows (approximately)
 /*!40000 ALTER TABLE `user_role` DISABLE KEYS */;
 INSERT INTO `user_role` (`id`, `name`) VALUES
 	(1, 'Admin'),
 	(2, 'Employee');
 /*!40000 ALTER TABLE `user_role` ENABLE KEYS */;
 
--- Dumping structure for table empattendanceci.user_submenu
+-- Dumping structure for table dtr_ci.user_submenu
 CREATE TABLE IF NOT EXISTS `user_submenu` (
   `id` int(2) NOT NULL AUTO_INCREMENT,
   `menu_id` int(2) NOT NULL,
@@ -290,7 +290,7 @@ CREATE TABLE IF NOT EXISTS `user_submenu` (
   CONSTRAINT `user_submenu_ibfk_1` FOREIGN KEY (`menu_id`) REFERENCES `user_menu` (`id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
--- Dumping data for table empattendanceci.user_submenu: ~10 rows (approximately)
+-- Dumping data for table dtr_ci.user_submenu: ~10 rows (approximately)
 /*!40000 ALTER TABLE `user_submenu` DISABLE KEYS */;
 INSERT INTO `user_submenu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active`) VALUES
 	(1, 1, 'Dashboard', 'admin', 'fas fa-fw fa-tachometer-alt', 1),
