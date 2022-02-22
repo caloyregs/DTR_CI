@@ -1,6 +1,6 @@
 # DTR_CI
  
-A simple DTR Demo in Codeigniiter.
+A simple DTR Demo in Codeigniter.
 
 Login test
 
